@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.cinnamon.ScreenSaver
+Exec=/usr/bin/python3 @PREFIX@/app/lock-native.py --hold
+SystemdService=macshell-lock-native.service

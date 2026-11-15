@@ -1,0 +1,17 @@
+#!/bin/sh
+# MacShell for Linux Mint Cinnamon: command line control. Installed by install.sh.
+PREFIX=@PREFIX@
+case "${1:-start}" in
+ start) exec "@BINDIR@/macshell-cinnamon-start";;
+ restart) exec systemctl --user restart macshell-source.service;;
+ stop) exec systemctl --user stop macshell-source.service macshell-native.service;;
+ control|controlcenter) set -- controlcenter toggle;;
+ spotlight) set -- spotlight toggle;;
+ settings) set -- settings open;;
+ clock) set -- clock open;;
+ finder) shift; set -- finder open "${1:-$HOME}";;
+ finder-new) shift; set -- finder newWindow "${1:-$HOME}";;
+ widgets) set -- widgets edit true;;
+ *) echo 'Usage: macshell-cinnamon {start|stop|restart|control|spotlight|settings|clock|finder [PATH]|finder-new|widgets}' >&2; exit 2;;
+esac
+exec "$PREFIX/runtime/qs" ipc --newest -p "$PREFIX/app/MacShell" call "$@"

@@ -1,0 +1,14 @@
+@import url("resource:///org/gnome/theme/gtk.css");
+
+/* MacShell Cinnamon native app adaptation: source Settings typography/palette. */
+window { font-family: "SF Pro Text"; font-size: 13px; }
+window.background { background-color: #1e1e1e; color: #f5f5f7; }
+headerbar, .titlebar { background-color: #292929; background-image: none; }
+.sidebar, .sidebar.view, placessidebar, placessidebar viewport { background-color: #292929; color: #f5f5f7; }
+.sidebar row:selected, placessidebar row:selected { background-color: #0a84ff; color: white; border-radius: 7px; }
+.sidebar row, placessidebar row { margin: 2px 7px; padding: 5px 8px; }
+menu { border-radius: 12px; padding: 5px; }
+menuitem { border-radius: 6px; padding: 5px 9px; }
+selection { background-color: #0a84ff; color: white; }
+
+@import url("macshell-popups.css");

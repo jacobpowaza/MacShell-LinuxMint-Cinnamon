@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MacShell Cinnamon
+Exec=@BINDIR@/macshell-cinnamon-start
+OnlyShowIn=X-Cinnamon;
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=3

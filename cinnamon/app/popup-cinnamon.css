@@ -1,0 +1,84 @@
+/* MacShell macOS alert and popup treatment; native actions/authentication preserved. */
+.dialog, .modal-dialog {
+  font-family: "SF Pro Text"; font-size: 13px;
+  background-color: #2c2c2c; color: #f5f5f7;
+  background-gradient-direction: none;
+  border-radius: 28px; border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+  padding: 22px; spacing: 0;
+}
+.dialog > StBoxLayout:first-child, .modal-dialog > StBoxLayout:first-child { padding: 0; }
+.dialog-content-box, .modal-dialog-content-box { margin: 0 0 22px 0; spacing: 16px; max-width: 30em; }
+.message-dialog-content { spacing: 14px; }
+.message-dialog-title, .confirm-dialog-title, .show-processes-dialog-subject, .mount-question-dialog-subject {
+  font-size: 17px; font-weight: bold; color: #f5f5f7; text-align: left;
+}
+.message-dialog-content .message-dialog-title, .dialog .confirm-dialog-title, .modal-dialog .confirm-dialog-title { text-align: left; }
+.message-dialog-content .message-dialog-description, .message-dialog-content .message-dialog-caption { text-align: left; font-size: 13px; color: #ededf0; }
+.dialog-button-box, .modal-dialog-button-box { padding: 0; margin: 0; spacing: 8px; background-color: transparent; border: none; }
+.dialog-button, .modal-dialog-button {
+  font-family: "SF Pro Text"; font-size: 13px; font-weight: normal;
+  min-width: 80px; min-height: 20px; padding: 8px 18px;
+  border-radius: 999px; border: none; background-color: #49494e;
+  background-gradient-direction: none; box-shadow: none; color: #f5f5f7;
+}
+.dialog-button:not(:last-child), .modal-dialog-button:not(:last-child) { margin-right: 0; }
+.dialog-button:hover, .modal-dialog-button:hover { background-color: #56565b; }
+.dialog-button:active, .modal-dialog-button:active { background-color: #626267; }
+.dialog-button:focus, .modal-dialog-button:focus { box-shadow: inset 0 0 0 2px #8cbeff; }
+.dialog-button:default, .modal-dialog-button:default { background-color: #006bdd; color: white; }
+.dialog-button:default:hover, .modal-dialog-button:default:hover { background-color: #0070e8; }
+.dialog-button:destructive-action, .modal-dialog-button:destructive-action { background-color: #603531; color: #ffaaa3; }
+.dialog-button:destructive-action:hover, .modal-dialog-button:destructive-action:hover { background-color: #75403b; }
+.dialog-button:insensitive, .modal-dialog-button:insensitive { color: #98989f; background-color: #3b3b3f; }
+.prompt-dialog { width: 28em; }
+.prompt-dialog-password-entry, .run-dialog-entry { border-radius: 9px; padding: 9px 12px; background-color: #242426; color: #f5f5f7; border: 1px solid rgba(255,255,255,0.18); }
+.prompt-dialog-password-entry:focus, .run-dialog-entry:focus { border-color: #0a84ff; box-shadow: inset 0 0 0 1px #0a84ff; }
+.prompt-dialog-error-label { color: #ffaaa3; }
+.end-session-dialog { min-width: 28em; }
+.popup-menu-content, .popup-sub-menu {
+  font-family: "SF Pro Text"; font-size: 13px; color: #f5f5f7;
+  background-color: rgba(48,48,51,0.98); background-gradient-direction: none;
+  border-radius: 12px; padding: 5px;
+}
+.popup-menu-item { border-radius: 6px; padding: 5px 9px; }
+.popup-menu-item:active { background-color: #006bdd; color: white; }
+.popup-menu-item:insensitive { color: #98989f; }
+.popup-separator-menu-item { padding: 4px 7px; }
+.tooltip { font-family: "SF Pro Text"; font-size: 12px; color: #f5f5f7; background-color: #38383b; border-radius: 8px; padding: 6px 9px; }
+.notification { font-family: "SF Pro Text"; font-size: 13px; color: #f5f5f7; background-color: #303033; border-radius: 20px; padding: 16px; }
+.osd-window, .media-keys-osd, .info-osd, .workspace-switch-osd, .switcher-list, .resize-popup {
+  font-family: "SF Pro Text"; color: #f5f5f7; background-color: rgba(48,48,51,0.96);
+  background-gradient-direction: none; border-radius: 20px;
+}
+/* Native shell hover feedback uses Cinnamon's animation clock. */
+.dialog-button, .modal-dialog-button, .popup-menu-item { transition-duration: 130ms; }
+/* Cinnamon's native actor renderer approximates the shared QML glass material. */
+.dialog-button, .modal-dialog-button {
+  background-gradient-direction: vertical;
+  background-gradient-start: #57575e; background-gradient-end: #414147;
+  border: 1px solid rgba(255,255,255,0.20);
+  box-shadow: inset 0 1px rgba(255,255,255,0.22), 0 2px 4px rgba(0,0,0,0.18);
+}
+.dialog-button:hover, .modal-dialog-button:hover {
+  background-gradient-start: #63636b; background-gradient-end: #4a4a51;
+}
+.dialog-button:default, .modal-dialog-button:default {
+  background-gradient-start: #1778db; background-gradient-end: #0056bd;
+}
+.dialog-button:default:hover, .modal-dialog-button:default:hover {
+  background-gradient-start: #1c7fe6; background-gradient-end: #005bc4;
+}
+.dialog-button:destructive-action, .modal-dialog-button:destructive-action {
+  background-gradient-start: #704039; background-gradient-end: #512b27;
+}
+.dialog-button:destructive-action:hover, .modal-dialog-button:destructive-action:hover {
+  background-gradient-start: #7b4942; background-gradient-end: #5a302b;
+}
+.dialog-button:active, .modal-dialog-button:active {
+  background-gradient-start: #3e3e44; background-gradient-end: #4a4a51;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+}
+.dialog-button:insensitive, .modal-dialog-button:insensitive {
+  background-gradient-start: #404045; background-gradient-end: #38383d;
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=MacShell Cinnamon X11 adapter
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+Environment=PATH=@PREFIX@/app/bin:@BINDIR@:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 @PREFIX@/app/native.py
+Restart=on-failure
+RestartSec=2

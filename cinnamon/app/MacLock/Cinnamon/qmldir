@@ -1,0 +1,4 @@
+module Cinnamon
+singleton ToplevelManager 1.0 ToplevelManager.qml
+singleton Hyprland 1.0 Hyprland.qml
+singleton Host 1.0 Host.qml

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Finder
+Comment=MacShell file browser
+Exec=@BINDIR@/macshell-cinnamon finder %u
+Icon=system-file-manager
+Terminal=false
+Categories=System;FileManager;
+MimeType=inode/directory;
+StartupNotify=false
+Actions=NewWindow;
+
+[Desktop Action NewWindow]
+Name=New Window
+Exec=@BINDIR@/macshell-cinnamon finder-new

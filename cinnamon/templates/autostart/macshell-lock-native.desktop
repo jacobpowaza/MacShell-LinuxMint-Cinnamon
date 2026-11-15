@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MacShell Lock Screen
+Exec=@BINDIR@/macshell-lock-start
+OnlyShowIn=X-Cinnamon;
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=0

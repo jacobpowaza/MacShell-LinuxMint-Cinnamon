@@ -1,0 +1,102 @@
+@import url("file://@HOME@/.themes/MacShell-Apps/gtk-4.0/unpacked/gtk-dark.css");
+
+/* MacShell Cinnamon native app adaptation: source Settings typography/palette. */
+window { font-family: "SF Pro Text"; font-size: 13px; }
+window.background { background-color: #1e1e1e; color: #f5f5f7; }
+headerbar, .titlebar { background-color: #292929; background-image: none; }
+.sidebar, .sidebar.view, placessidebar, placessidebar viewport { background-color: #292929; color: #f5f5f7; }
+.sidebar row:selected, placessidebar row:selected { background-color: #0a84ff; color: white; border-radius: 7px; }
+.sidebar row, placessidebar row { margin: 2px 7px; padding: 5px 8px; }
+menu { border-radius: 12px; padding: 5px; }
+menuitem { border-radius: 6px; padding: 5px 9px; }
+selection { background-color: #0a84ff; color: white; }
+
+/* macOS-style traffic light window buttons (close / minimize / maximize) */
+
+headerbar .titlebutton,
+windowcontrols .titlebutton,
+headerbar button.titlebutton,
+.titlebar button.titlebutton {
+  min-width: 16px;
+  min-height: 16px;
+  padding: 0;
+  margin: 0 3px;
+  border-width: 0;
+  border-radius: 999px;
+  background-image: none;
+  background-color: #d9d9d9;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+  color: rgba(0, 0, 0, 0.55);
+}
+
+headerbar .titlebutton.close,
+windowcontrols .close,
+headerbar button.titlebutton.close,
+.titlebar button.titlebutton.close {
+  background-color: #ff5f57;
+}
+
+headerbar .titlebutton.minimize,
+windowcontrols .minimize,
+headerbar button.titlebutton.minimize,
+.titlebar button.titlebutton.minimize {
+  background-color: #febc2e;
+}
+
+headerbar .titlebutton.maximize,
+windowcontrols .maximize,
+headerbar button.titlebutton.maximize,
+.titlebar button.titlebutton.maximize {
+  background-color: #28c840;
+}
+
+headerbar .titlebutton:hover,
+windowcontrols .titlebutton:hover {
+  background-image: none;
+}
+
+/* glyphs hidden until hover, like macOS */
+headerbar .titlebutton image,
+headerbar .titlebutton label,
+windowcontrols .titlebutton image,
+windowcontrols .titlebutton label,
+headerbar button.titlebutton image,
+headerbar button.titlebutton label {
+  opacity: 0;
+}
+
+headerbar .titlebutton:hover image,
+headerbar .titlebutton:hover label,
+windowcontrols .titlebutton:hover image,
+windowcontrols .titlebutton:hover label,
+headerbar button.titlebutton:hover image,
+headerbar button.titlebutton:hover label {
+  opacity: 1;
+}
+
+headerbar .titlebutton:backdrop,
+windowcontrols .titlebutton:backdrop,
+headerbar button.titlebutton:backdrop,
+.titlebar button.titlebutton:backdrop {
+  background-image: none;
+  background-color: #d9d9d9;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.35);
+}
+/* MacShell unified window controls */
+headerbar button.titlebutton, .titlebar button.titlebutton,
+windowcontrols button {
+ min-width: 14px; min-height: 14px; padding: 0; margin: 0 3px;
+ border: none; border-radius: 100%; background-image: none;
+ box-shadow: inset 0 0 0 1px alpha(black, 0.12);
+}
+windowcontrols button.close { background-color: #ff5f57; }
+windowcontrols button.minimize { background-color: #febc2e; }
+windowcontrols button.maximize { background-color: #28c840; }
+windowcontrols button:backdrop { background-color: #a0a0a0; }
+windowcontrols button image { opacity: 0; }
+windowcontrols button:hover image { opacity: 1; }
+decoration { border-radius: 12px; }
+window.maximized decoration, window.fullscreen decoration { border-radius: 0; }
+
+@import url("file://@HOME@/.themes/MacShell-Apps/gtk-4.0/macshell-popups.css");
