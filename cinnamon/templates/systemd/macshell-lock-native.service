@@ -1,0 +1,12 @@
+[Unit]
+Description=MacLock visuals hosted by Cinnamon's native secure screensaver
+PartOf=graphical-session.target
+[Service]
+Type=dbus
+BusName=org.cinnamon.ScreenSaver
+ExecStart=/usr/bin/python3 @PREFIX@/app/lock-native.py --hold
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+Environment=MACSHELL_SECURE_SURFACE=1
+Environment=GTK_MODULES=gail:atk-bridge

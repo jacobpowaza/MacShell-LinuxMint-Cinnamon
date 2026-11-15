@@ -1,0 +1,26 @@
+#!/bin/sh
+# Launches Quickshell from the user-space Nix closure installed by MacShell (no root, nothing system-wide).
+PREFIX=@PREFIX@
+NIX="$PREFIX/runtime/nix"
+QS=@QS_STORE@
+export QT_QPA_PLATFORM=xcb
+export QS_ICON_THEME=MacShell-Tahoe
+export PATH="$PREFIX/app/bin:$PATH"
+[ -d "$PREFIX/runtime/qml-extra" ] && export QML_IMPORT_PATH="$PREFIX/runtime/qml-extra" QML2_IMPORT_PATH="$PREFIX/runtime/qml-extra"
+[ -d "$PREFIX/runtime/compat-libs" ] && export LD_LIBRARY_PATH="$PREFIX/runtime/compat-libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+PROOT="$NIX/.nix-portable/bin/proot"
+MESA=@MESA_STORE@
+GLVND=@GLVND_STORE@
+if [ -r /proc/driver/nvidia/version ] && [ -e /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.0 ]; then
+ # Proprietary NVIDIA driver: borrow the host's userspace libraries (they must match the running kernel module).
+ /usr/bin/python3 "$PREFIX/runtime/refresh-nvidia.py"
+ export QT_XCB_GL_INTEGRATION=xcb_glx
+ export __GLX_VENDOR_LIBRARY_NAME=nvidia
+ export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+ export LD_LIBRARY_PATH="$PREFIX/runtime/nvidia-libs:$GLVND/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+else
+ export LIBGL_DRIVERS_PATH="$MESA/lib/dri" GBM_BACKENDS_PATH="$MESA/lib/gbm"
+ export __EGL_VENDOR_LIBRARY_FILENAMES="$MESA/share/glvnd/egl_vendor.d/50_mesa.json"
+ export LD_LIBRARY_PATH="$MESA/lib:$GLVND/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+fi
+exec "$PROOT" -b "$NIX/.nix-portable/nix:/nix" "$QS/bin/quickshell" "$@"

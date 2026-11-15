@@ -1,0 +1,2 @@
+#!/bin/sh
+exec "@PREFIX@/runtime/qs" ipc --newest -p "@PREFIX@/app/MacShell" call spotlight apps

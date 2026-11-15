@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+import sys,json
+import os
+sys.path.insert(0,os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+from native import rpc
+args=sys.argv[1:]
+if '-j' in args:args.remove('-j')
+try:
+ state=rpc('state')
+ if not args:sys.exit(0)
+ if args[0]=='clients':print(json.dumps(state['clients']))
+ elif args[0]=='monitors':print(json.dumps(state['monitors']))
+ elif args[0]=='workspaces':print(json.dumps(state['workspaces']))
+ elif args[0]=='activewindow':print(json.dumps(next((w for w in state['clients'] if w['wid']==state['active']),{})))
+ elif args[0]=='activeworkspace':print(json.dumps(next((w for w in state['workspaces'] if w['id']==state['workspace']),{})))
+ elif args[0]=='dispatch':rpc('dispatch',args[1] if len(args)>1 else '')
+ elif args[0]=='hyprpaper':
+  if len(args)>2 and args[1]=='wallpaper':rpc('wallpaper',args[2].split(',',1)[-1])
+  else:print(state['wallpaper'])
+ elif args[0]=='version':print('Cinnamon/X11 adapter for MacShell')
+ elif args[0]=='devices':print(json.dumps(rpc('devices')))
+ elif args[0]=='switchxkblayout':rpc('layout',int(args[-1]))
+ elif args[0]=='eval':rpc('eval',args[1] if len(args)>1 else '')
+except Exception as e:print(str(e),file=sys.stderr);sys.exit(1)

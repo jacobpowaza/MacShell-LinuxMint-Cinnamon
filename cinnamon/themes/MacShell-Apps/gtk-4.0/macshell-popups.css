@@ -1,0 +1,102 @@
+/* MacShell alerts and transient surfaces. Palette follows the installed dark app theme. */
+dialog.background, messagedialog, messagedialog.background, window.alert, alertdialog {
+  font-family: "SF Pro Text";
+  font-size: 13px;
+  background-color: #2c2c2c;
+  color: #f5f5f7;
+  border-radius: 26px;
+}
+messagedialog decoration, dialog.background decoration, alertdialog decoration { border-radius: 26px; }
+messagedialog .titlebar, dialog.background .titlebar, alertdialog .titlebar {
+  background-color: #303033; background-image: none; border: none; box-shadow: none;
+}
+messagedialog .dialog-vbox { padding: 22px; }
+messagedialog .message-area { padding: 0; }
+messagedialog .message-area > box { margin-left: 12px; }
+messagedialog .message-area label { color: #f5f5f7; }
+messagedialog .message-area label:first-child, alertdialog .heading { font-size: 17px; font-weight: bold; }
+messagedialog .dialog-action-area { padding: 0; margin-top: 8px; }
+messagedialog .dialog-action-area button, alertdialog button, dialog.background .dialog-action-area button {
+  min-height: 20px; padding: 8px 18px; border-radius: 999px;
+  background-image: none; background-color: #49494e; border-color: transparent;
+  box-shadow: none; text-shadow: none; color: #f5f5f7;
+}
+messagedialog .dialog-action-area button:hover, alertdialog button:hover, dialog.background .dialog-action-area button:hover { background-color: #56565b; }
+messagedialog .dialog-action-area button:active, alertdialog button:active { background-color: #626267; }
+messagedialog button.suggested-action, messagedialog button.default, alertdialog button.suggested-action, dialog.background .dialog-action-area button.suggested-action {
+  background-color: #006bdd; color: white;
+}
+messagedialog button.suggested-action:hover, messagedialog button.default:hover, alertdialog button.suggested-action:hover { background-color: #0070e8; }
+messagedialog button.destructive-action, alertdialog button.destructive-action, dialog.background .dialog-action-area button.destructive-action { background-color: #603531; color: #ffaaa3; }
+messagedialog button.destructive-action:hover, alertdialog button.destructive-action:hover { background-color: #75403b; }
+messagedialog button:disabled, alertdialog button:disabled, dialog.background .dialog-action-area button:disabled { opacity: 0.45; }
+messagedialog button:focus, alertdialog button:focus, dialog.background .dialog-action-area button:focus { outline-width: 0; outline-style: none; }
+filechooser, filechooser.background { background-color: #252527; color: #f5f5f7; }
+filechooser .dialog-action-box, filechooser .dialog-action-area { padding: 12px 18px; background-color: #303033; }
+filechooser button.suggested-action { background-image: none; background-color: #006bdd; color: white; border-radius: 999px; }
+popover > contents, popover.background, menu, .menu {
+  background-color: #303033; background-image: none; color: #f5f5f7;
+  border-radius: 12px; padding: 5px;
+}
+menuitem, popover modelbutton, popover .menuitem { min-height: 22px; border-radius: 6px; padding: 3px 9px; }
+menuitem:hover, popover modelbutton:hover, popover .menuitem:hover { background-color: #006bdd; color: white; }
+menuitem:disabled, popover modelbutton:disabled { color: #98989f; }
+menu separator, popover separator { margin: 4px 7px; min-height: 1px; background-color: alpha(#f5f5f7, 0.14); }
+tooltip, tooltip.background { background-color: #38383b; color: #f5f5f7; border-radius: 8px; padding: 6px 9px; font-family: "SF Pro Text"; font-size: 12px; }
+/* Override WhiteSur's linked-action selectors at equal specificity. */
+messagedialog .dialog-action-area button:not(.suggested-action):not(.destructive-action),
+messagedialog .dialog-action-area button:not(.suggested-action):not(.destructive-action):focus {
+  border-radius: 999px; background-color: #49494e; color: #f5f5f7;
+}
+messagedialog .dialog-action-area button:not(.suggested-action):not(.destructive-action):hover { background-color: #56565b; }
+messagedialog .dialog-action-area button.suggested-action,
+messagedialog .dialog-action-area button.default {
+  border-radius: 999px; background-color: #006bdd; background-image: none; box-shadow: none; color: white;
+}
+messagedialog .dialog-action-area button.suggested-action:hover { background-color: #0070e8; }
+messagedialog .dialog-action-area button.destructive-action { border-radius: 999px; background-color: #603531; color: #ffaaa3; box-shadow: none; }
+messagedialog .dialog-action-area button.destructive-action:hover { background-color: #75403b; }
+messagedialog .dialog-vbox > box > box > label:first-child { font-size: 17px; font-weight: bold; }
+messagedialog .dialog-action-area.linked > button.text-button,
+messagedialog .dialog-action-area.linked > button.text-button:first-child,
+messagedialog .dialog-action-area.linked > button.text-button:last-child {
+  border-top-left-radius: 999px; border-top-right-radius: 999px;
+  border-bottom-left-radius: 999px; border-bottom-right-radius: 999px;
+}
+/* Short native hover feedback; GTK's global animation setting still governs it. */
+messagedialog button, dialog.background button, alertdialog button,
+menuitem, popover modelbutton, popover .menuitem {
+  transition: background-color 130ms ease-out, color 100ms ease-out, box-shadow 130ms ease-out;
+}
+/* Glass action material: a narrow upper reflection, inner rim, and contact shadow. */
+messagedialog .dialog-action-area button.suggested-action,
+messagedialog .dialog-action-area button.default,
+messagedialog .dialog-action-area button.destructive-action,
+messagedialog .dialog-action-area button:not(.suggested-action):not(.destructive-action),
+alertdialog button, dialog.background .dialog-action-area button {
+  background-image: linear-gradient(to bottom, alpha(white,0.16), alpha(white,0) 46%, alpha(black,0.07));
+  border: 1px solid alpha(white,0.2);
+  box-shadow: inset 0 1px alpha(white,0.22), inset 0 -1px alpha(black,0.12), 0 2px 4px alpha(black,0.18);
+}
+messagedialog .dialog-action-area button:hover, alertdialog button:hover,
+dialog.background .dialog-action-area button:hover {
+  background-image: linear-gradient(to bottom, alpha(white,0.23), alpha(white,0.015) 46%, alpha(black,0.06));
+  box-shadow: inset 0 1px alpha(white,0.32), inset 0 -1px alpha(black,0.12), 0 3px 6px alpha(black,0.2);
+}
+messagedialog .dialog-action-area button:active, alertdialog button:active,
+dialog.background .dialog-action-area button:active {
+  background-image: linear-gradient(to bottom, alpha(black,0.08), alpha(white,0.02));
+  box-shadow: inset 0 1px 2px alpha(black,0.18), inset 0 -1px alpha(white,0.1);
+}
+/* Compact Tahoe confirmation layout: one inset, not GTK's nested margins. */
+messagedialog.macshell-alert.background { background-color: #2c2c2c; }
+messagedialog.macshell-alert .dialog-vbox { padding: 20px; }
+messagedialog.macshell-alert .dialog-action-area { margin-top: 0; padding: 0; }
+messagedialog.macshell-alert .dialog-action-area button { min-height: 20px; padding: 7px 16px; }
+messagedialog.macshell-alert .dialog-action-area button:not(:last-child) { margin-right: 0; }
+messagedialog.macshell-alert .dialog-action-area button:not(.suggested-action):not(.destructive-action) { background-color: #444444; }
+messagedialog.macshell-alert .dialog-action-area button {
+  background-image: linear-gradient(to bottom, alpha(white,0.07), alpha(white,0) 46%, alpha(black,0.03));
+  border: 1px solid alpha(white,0.14);
+  box-shadow: inset 0 1px alpha(white,0.10), 0 1px 2px alpha(black,0.12);
+}

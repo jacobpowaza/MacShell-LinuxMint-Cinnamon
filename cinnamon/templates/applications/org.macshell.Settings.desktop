@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Settings
+Exec=@BINDIR@/macshell-cinnamon settings
+Icon=org.gnome.Settings
+Terminal=false
+Categories=Utility;
+StartupNotify=false

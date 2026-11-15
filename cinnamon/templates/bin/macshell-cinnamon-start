@@ -1,0 +1,4 @@
+#!/bin/sh
+systemctl --user import-environment DISPLAY XAUTHORITY DBUS_SESSION_BUS_ADDRESS XDG_CURRENT_DESKTOP
+"@BINDIR@/macshell-lock-start"
+exec systemctl --user start macshell-native.service macshell-source.service

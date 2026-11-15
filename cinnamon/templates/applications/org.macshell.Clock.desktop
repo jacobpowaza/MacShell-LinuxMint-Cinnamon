@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Clock
+Exec=@BINDIR@/macshell-cinnamon clock
+Icon=org.gnome.clocks
+Terminal=false
+Categories=Utility;
+StartupNotify=false

@@ -1,0 +1,136 @@
+/* macOS-style traffic light window buttons (close / minimize / maximize) */
+
+/* ---- base ---- */
+headerbar button.titlebutton,
+.titlebar button.titlebutton {
+  min-width: 16px;
+  min-height: 16px;
+  padding: 0;
+  margin: 0 3px;
+  border-width: 0;
+  border-radius: 999px;
+  background-image: none;
+  background-color: #d9d9d9;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+  color: rgba(0, 0, 0, 0.60);
+}
+
+/* ---- close: red ---- */
+headerbar button.titlebutton.close,
+.titlebar button.titlebutton.close,
+headerbar button.titlebutton.close:hover,
+.titlebar button.titlebutton.close:hover,
+headerbar button.titlebutton.close:active,
+.titlebar button.titlebutton.close:active,
+headerbar button.titlebutton.close:checked,
+.titlebar button.titlebutton.close:checked {
+  background-image: none;
+  background-color: #ff5f57;
+  color: rgba(0, 0, 0, 0.60);
+}
+
+headerbar button.titlebutton.close:active,
+.titlebar button.titlebutton.close:active {
+  background-color: #e14640;
+}
+
+headerbar button.titlebutton.close:backdrop,
+.titlebar button.titlebutton.close:backdrop,
+headerbar button.titlebutton.close:hover:backdrop,
+.titlebar button.titlebutton.close:hover:backdrop,
+headerbar button.titlebutton.close:active:backdrop,
+.titlebar button.titlebutton.close:active:backdrop {
+  background-image: none;
+  background-color: #d9d9d9;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+/* ---- minimize: yellow ---- */
+headerbar button.titlebutton.minimize,
+.titlebar button.titlebutton.minimize,
+headerbar button.titlebutton.minimize:hover,
+.titlebar button.titlebutton.minimize:hover,
+headerbar button.titlebutton.minimize:active,
+.titlebar button.titlebutton.minimize:active,
+headerbar button.titlebutton.minimize:checked,
+.titlebar button.titlebutton.minimize:checked {
+  background-image: none;
+  background-color: #febc2e;
+  color: rgba(0, 0, 0, 0.60);
+}
+
+headerbar button.titlebutton.minimize:active,
+.titlebar button.titlebutton.minimize:active {
+  background-color: #d9a021;
+}
+
+headerbar button.titlebutton.minimize:backdrop,
+.titlebar button.titlebutton.minimize:backdrop,
+headerbar button.titlebutton.minimize:hover:backdrop,
+.titlebar button.titlebutton.minimize:hover:backdrop,
+headerbar button.titlebutton.minimize:active:backdrop,
+.titlebar button.titlebutton.minimize:active:backdrop {
+  background-image: none;
+  background-color: #d9d9d9;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+/* ---- maximize: green ---- */
+headerbar button.titlebutton.maximize,
+.titlebar button.titlebutton.maximize,
+headerbar button.titlebutton.maximize:hover,
+.titlebar button.titlebutton.maximize:hover,
+headerbar button.titlebutton.maximize:active,
+.titlebar button.titlebutton.maximize:active,
+headerbar button.titlebutton.maximize:checked,
+.titlebar button.titlebutton.maximize:checked {
+  background-image: none;
+  background-color: #28c840;
+  color: rgba(0, 0, 0, 0.60);
+}
+
+headerbar button.titlebutton.maximize:active,
+.titlebar button.titlebutton.maximize:active {
+  background-color: #1f9e34;
+}
+
+headerbar button.titlebutton.maximize:backdrop,
+.titlebar button.titlebutton.maximize:backdrop,
+headerbar button.titlebutton.maximize:hover:backdrop,
+.titlebar button.titlebutton.maximize:hover:backdrop,
+headerbar button.titlebutton.maximize:active:backdrop,
+.titlebar button.titlebutton.maximize:active:backdrop {
+  background-image: none;
+  background-color: #d9d9d9;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+/* ---- glyphs hidden until hover, like macOS ---- */
+headerbar button.titlebutton image,
+headerbar button.titlebutton label,
+.titlebar button.titlebutton image,
+.titlebar button.titlebutton label {
+  opacity: 0;
+}
+
+headerbar button.titlebutton:hover image,
+headerbar button.titlebutton:hover label,
+.titlebar button.titlebutton:hover image,
+.titlebar button.titlebutton:hover label {
+  opacity: 1;
+}
+/* MacShell unified window controls */
+headerbar button.titlebutton, .titlebar button.titlebutton,
+windowcontrols button {
+ min-width: 14px; min-height: 14px; padding: 0; margin: 0 3px;
+ border: none; border-radius: 100%; background-image: none;
+ box-shadow: inset 0 0 0 1px alpha(black, 0.12);
+}
+windowcontrols button.close { background-color: #ff5f57; }
+windowcontrols button.minimize { background-color: #febc2e; }
+windowcontrols button.maximize { background-color: #28c840; }
+windowcontrols button:backdrop { background-color: #a0a0a0; }
+windowcontrols button image { opacity: 0; }
+windowcontrols button:hover image { opacity: 1; }
+decoration { border-radius: 12px; }
+window.maximized decoration, window.fullscreen decoration { border-radius: 0; }

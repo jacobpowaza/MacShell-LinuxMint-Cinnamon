@@ -1,0 +1,13 @@
+[Unit]
+Description=MacShell UI (Quickshell) for Cinnamon
+Requires=macshell-native.service
+After=macshell-native.service
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=@PREFIX@/runtime/qs -n -p @PREFIX@/app/MacShell --no-color
+ExecStartPost=/usr/bin/python3 @PREFIX@/app/notification-handoff.py
+Restart=on-failure
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
